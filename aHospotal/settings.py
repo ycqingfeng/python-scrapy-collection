@@ -10,7 +10,7 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-LOG_FILE = './log.log'
+# LOG_FILE = './log.log'
 
 
 BOT_NAME = 'aHospotal'
@@ -67,7 +67,7 @@ DOWNLOAD_TIMEOUT = 10
 DNS_TIMEOUT = 10
 
 
-MONGO_URI = 'mongodb://yc:yc@localhost:27017'
+MONGO_URI = 'mongodb://yc:yc@ycsin.cn:27017'
 MONGO_DATABASE = 'data'
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32

@@ -74,7 +74,7 @@ MONGO_DATABASE = 'data'
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
-# See also autothrottle settings and docs
+# See also autothrottle settings and docsim
 DOWNLOAD_DELAY = 2
 
 # The download delay setting will honor only one of:

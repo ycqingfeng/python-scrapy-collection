@@ -63,21 +63,28 @@ class AhospotalPipeline(object):
         _calendar_months = json_obj['calendar_months']
 
         dict = {}
-        dict[today] = {}
+        dict['date'] = today
         for month in _calendar_months:
             for day in month['days']:
                 if day['date'] == tomorrow:
-                    dict[today]['offset01'] = {
+                    dict['offset01'] = {
                         'checkin': day['available_for_checkin'],
                         'price': day['price']
                     }
                 elif day['date'] == day_after_tomorrow:
-                    dict[today]['offset02'] = {
+                    dict['offset02'] = {
                         'checkin': day['available_for_checkin'],
                         'price': day['price']
                     }
 
-        self.db[self.collection_airbnb].update({"id": item_id}, {'$set': dict})
+        self.db[self.collection_airbnb].update({
+            '$and': [
+                {"id": item_id},
+                {'$nor': [
+                    {'calendar': {'$elemMatch': {'date': today}}}
+                ]}
+            ]
+        }, {'$push': {'calendar': dict}})
 
     def process_airbnb_location(self, item):
         item_id = item.get('id')

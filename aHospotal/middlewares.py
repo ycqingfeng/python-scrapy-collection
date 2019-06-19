@@ -14,7 +14,7 @@ from scrapy.core.downloader.handlers.http11 import TunnelError
 from scrapy import signals
 import base64
 import random
-import redis
+# import redis
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 import pymongo
 import aHospotal.settings as SETTING
@@ -120,7 +120,7 @@ class ProxyMiddleware(object):
 
     def __init__(self):
         self.output = open('data', 'w')
-        self.redisClient = redis.Redis(host='localhost', port=6379, password='password', db=1)
+        # self.redisClient = redis.Redis(host='localhost', port=6379, password='password', db=1)
 
         self.PROXIES = [
             {'ip_port': "180.168.13.26:8000", 'user_pass': None},
